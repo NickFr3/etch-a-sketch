@@ -7,9 +7,21 @@ for (i = 0; i < 16; i++) {
     cell.classList.add("cell", "cell-" + i);
 
     container.appendChild(cell);
-
-    // Change color of a cell when mouse enter it's space
-    cell.addEventListener("mouseenter", () => {
-        cell.style.backgroundColor = 'aqua';
-    });
 }
+
+let isDrawing = false;
+
+container.addEventListener("mousedown", () => {
+    isDrawing = true; 
+});
+
+container.addEventListener("mouseup", () => {
+    isDrawing = false;
+});
+
+// Draw in the grid only when mouseclick is held and mouse is hovering the cells
+container.addEventListener("mousemove", (event) => {
+    if (isDrawing == true) {
+        event.target.style.backgroundColor = 'aqua';
+    }
+});
