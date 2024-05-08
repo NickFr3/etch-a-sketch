@@ -60,6 +60,10 @@ container.addEventListener("mouseup", () => {
 // Draw in the grid only when mouseclick is held and mouse is hovering the cells
 container.addEventListener("mousemove", (event) => {
     if (isDrawing == true) {
-        event.target.style.backgroundColor = 'black';
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+
+        event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     }
 });
