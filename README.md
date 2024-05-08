@@ -1,3 +1,3 @@
 # etch-a-sketch
-#TO-DO
+## TO-DO
 - Add option for random colors
