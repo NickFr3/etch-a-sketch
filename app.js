@@ -1,13 +1,51 @@
 const container = document.querySelector(".container");
 
-// loop over n times to create the cells (16 fixed cells right now)
-for (i = 0; i < 16; i++) {
-    const cell = document.createElement("div");
+function setDefaultGridSize() {
+    let size = 16;
 
-    cell.classList.add("cell", "cell-" + i);
+    // loop over n times to create the cells
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            const cell = document.createElement("div");
 
-    container.appendChild(cell);
+            cell.classList.add("cell", "cell-" + i);
+
+            cell.style.width = (100 / size) + "%";
+            cell.style.height = (100 / size) + "%";
+
+            container.appendChild(cell);
+        }   
+    }
 }
+
+// Get size of grid from user if button is clicked, otherwise default to 16
+function getGridSize() {
+    let size = parseInt(prompt("Please provide a number between 1 and 100"));
+
+    if (size == null || size < 1 || size > 100 || isNaN(size)) {
+        alert("Input must be a number between 1 and 100")
+    } else {
+        // Reset grid by deleting the content inside the container
+        container.innerHTML = "";
+
+        // loop over n times to create the cells
+        for (i = 0; i < size; i++) {
+            for (j = 0; j < size; j++) {
+                const cell = document.createElement("div");
+
+                cell.classList.add("cell", "cell-" + i);
+
+                cell.style.width = (100 / size) + "%";
+                cell.style.height = (100 / size) + "%";
+
+                container.appendChild(cell);
+            }   
+        }
+    }  
+}
+
+// Ensure that default grid will be 16x16 by calling function before button is pressed
+window.onload = setDefaultGridSize;
 
 let isDrawing = false;
 
@@ -22,6 +60,6 @@ container.addEventListener("mouseup", () => {
 // Draw in the grid only when mouseclick is held and mouse is hovering the cells
 container.addEventListener("mousemove", (event) => {
     if (isDrawing == true) {
-        event.target.style.backgroundColor = 'aqua';
+        event.target.style.backgroundColor = 'black';
     }
 });
