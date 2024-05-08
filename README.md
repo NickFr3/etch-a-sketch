@@ -1,3 +1,1 @@
-# etch-a-sketch
-## TO-DO
-- Add option for random colors
+# The Odin Project: Etch-a-sketch
